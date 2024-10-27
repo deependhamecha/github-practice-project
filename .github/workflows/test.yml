@@ -13,7 +13,7 @@ jobs:
       - name: Output GitHub Context
         run: echo "${{ toJSON(github.event.issue) }}"
   test:
-#    needs: [lint]
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Get the code
@@ -23,7 +23,7 @@ jobs:
       - name: Run test
         run: npm run test
   deploy:
-#    needs: [test]
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get the code
